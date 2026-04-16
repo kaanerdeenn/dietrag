@@ -1,0 +1,21 @@
+# Environment Variables
+.env
+
+# Python Virtual Environment
+.venv
+venv/
+env/
+
+# IDE Settings
+.idea/
+.vscode/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Database
+user_diet.db
+
+# Vector Database (Chroma)
+.chroma/
