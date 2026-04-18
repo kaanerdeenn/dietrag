@@ -31,6 +31,7 @@ class UserResponse(BaseModel):
     language: Optional[str] = None
 
     class Config:
+        orm_mode = True
         from_attributes = True
 
 class UserUpdate(BaseModel):
@@ -60,6 +61,7 @@ class MealResponse(MealCreate):
     created_at: datetime
 
     class Config:
+        orm_mode = True
         from_attributes = True
 
 # ========================

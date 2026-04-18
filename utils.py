@@ -6,7 +6,7 @@ import os
 # --- GÜVENLİK AYARLARI ---
 SECRET_KEY = os.getenv("SECRET_KEY", "bu-cok-gizli-ve-uzun-bir-anahtardir-kimseyle-paylasma")
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 43200  # Token süresi 30 güne çıkarıldı (Android'de 401 hatasını önlemek için)
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

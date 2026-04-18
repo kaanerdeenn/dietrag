@@ -40,6 +40,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def home():
+    return {"message": "Diyet Asistanı API başarıyla çalışıyor! (Render Health Check OK)"}
+
+@app.head("/")
+def home_head():
+    return {"message": "Diyet Asistanı API başarıyla çalışıyor! (Render Health Check OK)"}
+
 # =============================================
 # GÜVENLİK & VERİTABANI BAĞLANTISI
 # =============================================
@@ -157,8 +165,10 @@ def update_user_me(
         if existing_user:
             raise HTTPException(status_code=400, detail="Bu e-posta adresi zaten kullanımda.")
             
-    if "password" in update_data and update_data["password"]:
-        update_data["password_hash"] = utils.hash_password(update_data.pop("password"))
+    if "password" in update_data:
+        pwd = update_data.pop("password")
+        if pwd and str(pwd).strip():
+            update_data["password_hash"] = utils.hash_password(pwd)
 
     for key, value in update_data.items():
         setattr(current_user, key, value)
